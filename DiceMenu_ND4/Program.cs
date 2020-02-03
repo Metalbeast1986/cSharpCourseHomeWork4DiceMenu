@@ -1,4 +1,5 @@
-﻿using System;
+using DiceMenu_ND4.GUI;
+using System;
 
 namespace DiceMenu_ND4
 {
@@ -6,7 +7,12 @@ namespace DiceMenu_ND4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.CursorVisible = false;
+            GuiController guiController = new GuiController();
+
+            guiController.ShowMenu();
+
+            Console.ReadKey();
         }
     }
 }

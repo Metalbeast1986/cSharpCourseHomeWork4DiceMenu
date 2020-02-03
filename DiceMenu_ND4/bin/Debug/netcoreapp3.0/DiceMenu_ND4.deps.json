@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "DiceMenu_ND4/1.0.0": {
+        "runtime": {
+          "DiceMenu_ND4.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DiceMenu_ND4/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

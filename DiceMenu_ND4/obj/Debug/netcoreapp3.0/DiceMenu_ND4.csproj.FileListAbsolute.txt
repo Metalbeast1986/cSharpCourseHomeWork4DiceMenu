@@ -1,0 +1,11 @@
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.exe
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.deps.json
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.runtimeconfig.json
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.runtimeconfig.dev.json
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.dll
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\bin\Debug\netcoreapp3.0\DiceMenu_ND4.pdb
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\obj\Debug\netcoreapp3.0\DiceMenu_ND4.csprojAssemblyReference.cache
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\obj\Debug\netcoreapp3.0\DiceMenu_ND4.AssemblyInfoInputs.cache
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\obj\Debug\netcoreapp3.0\DiceMenu_ND4.AssemblyInfo.cs
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\obj\Debug\netcoreapp3.0\DiceMenu_ND4.dll
+C:\Users\metal\Documents\GitHub\DiceMenu_ND4\DiceMenu_ND4\obj\Debug\netcoreapp3.0\DiceMenu_ND4.pdb
