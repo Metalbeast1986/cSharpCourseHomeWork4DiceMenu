@@ -15,6 +15,7 @@ namespace DiceMenu_ND4.ControllerClasses
 
         bool needToRenderMainMenu = true;
         bool needToRenderPlayerMenu = false;
+        bool needToRenderDiceMenu = false;
         bool needToRender = true;
         int index = 0;
         ConsoleKey key;
@@ -23,6 +24,7 @@ namespace DiceMenu_ND4.ControllerClasses
         {
             gameWindow = new GameWindow();
             PlayerSelectionMenu = new PlayerSelectionMenu();
+            diceSelectionMenu = new DiceSelectionMenu();
             mainMenu = new MainMenu();
 
         }
@@ -46,7 +48,7 @@ namespace DiceMenu_ND4.ControllerClasses
                         case ConsoleKey.P:
                             {
                                 PlayerSelectionMenu.Render();
-                                Select(PlayerSelectionMenu.buttonList);
+                                SelectPlayers(PlayerSelectionMenu.buttonList);
                                 //
                                 needToRenderMainMenu = false;
 
@@ -84,11 +86,11 @@ namespace DiceMenu_ND4.ControllerClasses
             PlayerSelectionMenu.Render();
             if (key == ConsoleKey.Enter)
             {
-                checkIndexValue(index);
+                CheckPlayersValue(index);
             }
 
         }
-        void Select(List<Button> buttonList)
+        void SelectPlayers(List<Button> buttonList)
         {
             needToRenderPlayerMenu = true;
             do
@@ -140,23 +142,47 @@ namespace DiceMenu_ND4.ControllerClasses
             } while (needToRenderPlayerMenu);
 
         }
-        public void checkIndexValue(int index)
+        public void CheckPlayersValue(int index)
         {
+            needToRenderPlayerMenu = false;
+            needToRenderDiceMenu = true;
+            int diceCount = 0;
 
-            if (index == 0)
+            if (needToRenderDiceMenu)
             {
-                //start game
-                Console.Clear();
-                GameController myGame = new GameController();
-                //myGame.StartGame();
-                needToRender = false;
+                diceSelectionMenu.Render();
+               
+                key = Console.ReadKey(true).Key;
+                do
+                {
+                    key = Console.ReadKey(true).Key;
+                    switch (key)
+                    {
+                        case ConsoleKey.Add:
+                            {
+                               diceCount++;
+                                break;
+                            }
+                        case ConsoleKey.Subtract:
+                            {
+                               diceCount--;
+                                break;
+                            }
+                    }
+                    DiceTotalCheck(index, diceCount);
+                } while (needToRenderDiceMenu);     
             }
-            else
+        }
+        void DiceTotalCheck(int playerCount, int diceCount)
+        {
+            diceSelectionMenu.diceCount = diceCount;
+            diceSelectionMenu.Render();
+            Console.WriteLine("DiceCount" + diceSelectionMenu.diceCount);
+            /*if (key == ConsoleKey.Enter)
             {
-                //how to exit application
-                System.Environment.Exit(0);
+                CheckPlayersValue(index);
             }
-
+            */
         }
     }
 }
