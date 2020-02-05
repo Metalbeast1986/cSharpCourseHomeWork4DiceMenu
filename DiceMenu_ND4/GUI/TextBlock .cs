@@ -23,5 +23,9 @@ namespace DiceMenu_ND4.GUI
                 _textBlocks[i].Render();
             }
         }
+        public void SetLine(int lineNr, string lineText)
+        {
+            _textBlocks[lineNr].SetText(lineText);
+        }
     }
 }

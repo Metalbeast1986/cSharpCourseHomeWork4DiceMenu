@@ -24,9 +24,7 @@ namespace DiceMenu_ND4.GUI
                 Render();
             }
         }
-
-        public string LabelText { get; internal set; }
-
+        
         public override void Render()
         {
             Console.SetCursorPosition(X, Y);
@@ -40,6 +38,11 @@ namespace DiceMenu_ND4.GUI
             }
 
             Console.Write(Label);
+        }
+
+        internal void SetText(string lineText)
+        {
+            Label = lineText;
         }
     }
 }

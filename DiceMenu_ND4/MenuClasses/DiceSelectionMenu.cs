@@ -7,8 +7,7 @@ namespace DiceMenu_ND4.MenuClasses
 {
     class DiceSelectionMenu : Window
     {
-        public int diceCount { get; set; }
-
+        public int defaultdiceCount = 1;
         private MenuLabel _increaseDice;
         private MenuLabel _decreaceDice;
         private TextBlock _titleTextBlock;
@@ -16,7 +15,7 @@ namespace DiceMenu_ND4.MenuClasses
 
         public DiceSelectionMenu() : base(0, 0, 120, 30, '%')
         {
-            _titleTextBlock = new TextBlock(10, 5, 100, new List<String> { "DiceMenu", "C# Course HomeWork ND4", $"Players have {diceCount}" });
+            _titleTextBlock = new TextBlock(10, 5, 100, new List<String> { "DiceMenu", "C# Course HomeWork ND4", $"Players have {defaultdiceCount}" });
             _increaseDice = new MenuLabel(20, 13, 28, 5, " [+] - Increase dice number");
 
             _decreaceDice = new MenuLabel(70, 13, 28, 5, " [-] - Decrease dice number");
@@ -33,8 +32,15 @@ namespace DiceMenu_ND4.MenuClasses
             Console.SetCursorPosition(0, 0);
             _increaseDice.Render();
             _decreaceDice.Render();
+           
         }
-        
+
+        public void SetDiceCount(int diceCount)
+        {
+            _titleTextBlock.SetLine(2, $"Players have {diceCount} dice");
+           // _titleTextBlock.SetLine(2, $"Players have {diceCount} dice");
+        }
+
         /*
         public void IncreaseDiceCount(int diceCount)
         {  

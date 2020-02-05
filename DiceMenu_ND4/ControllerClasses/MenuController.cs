@@ -175,9 +175,10 @@ namespace DiceMenu_ND4.ControllerClasses
         }
         void DiceTotalCheck(int playerCount, int diceCount)
         {
-            diceSelectionMenu.diceCount = diceCount;
+            diceSelectionMenu.SetDiceCount(diceCount);
             diceSelectionMenu.Render();
-            Console.WriteLine("DiceCount" + diceSelectionMenu.diceCount);
+
+            //Console.WriteLine("DiceCount" + diceSelectionMenu.diceCount);
             /*if (key == ConsoleKey.Enter)
             {
                 CheckPlayersValue(index);
