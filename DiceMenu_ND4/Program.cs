@@ -1,3 +1,4 @@
+using DiceMenu_ND4.ControllerClasses;
 using DiceMenu_ND4.GUI;
 using System;
 
@@ -8,9 +9,11 @@ namespace DiceMenu_ND4
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            GuiController guiController = new GuiController();
+            MenuController menuController = new MenuController();
+            //GuiController guiController = new GuiController();
 
-            guiController.ShowMenu();
+            //guiController.ShowMenu();
+            menuController.ShowMenu();
 
             Console.ReadKey();
         }

@@ -13,6 +13,7 @@ namespace DiceMenu_ND4.GUI
         public GameWindow gameWindow;
         public MainMenu mainMenu;
 
+        bool needToRenderMainMenu = true;
         bool needToRender = true;
         int index = 0;
         ConsoleKey key;
@@ -25,7 +26,7 @@ namespace DiceMenu_ND4.GUI
         }
        public void ShowMenu()
        {
-            if (needToRender)
+            if (needToRenderMainMenu)
             {
                 //gameWindow.Render();
 
@@ -33,6 +34,29 @@ namespace DiceMenu_ND4.GUI
 
                 //call out Select function to display all possible buttons
                 //Select(gameWindow.buttonList);
+
+                key = Console.ReadKey(true).Key;
+                do
+                {
+                    key = Console.ReadKey(true).Key;
+                    switch (key)
+                    {
+                        case ConsoleKey.P:
+                            {
+                                gameWindow.Render();
+                                //DiceSelectionMenu
+                                needToRenderMainMenu = false;
+                                //Console.Clear();
+                                break;
+                            }
+                        case ConsoleKey.Q:
+                            {
+                                System.Environment.Exit(0);
+                                break;
+                            }
+                    }
+     
+                } while (needToRenderMainMenu);
             }
             
         }
