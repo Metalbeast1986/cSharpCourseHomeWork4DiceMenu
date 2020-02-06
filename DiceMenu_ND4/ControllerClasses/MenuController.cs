@@ -11,6 +11,7 @@ namespace DiceMenu_ND4.ControllerClasses
         public GameWindow gameWindow;
         public PlayerSelectionMenu PlayerSelectionMenu;
         public DiceSelectionMenu diceSelectionMenu;
+        public GameController GameController;
         public MainMenu mainMenu;
 
         bool needToRenderMainMenu = true;
@@ -25,20 +26,15 @@ namespace DiceMenu_ND4.ControllerClasses
             gameWindow = new GameWindow();
             PlayerSelectionMenu = new PlayerSelectionMenu();
             diceSelectionMenu = new DiceSelectionMenu();
+            //GameController = new GameController();
             mainMenu = new MainMenu();
-
         }
+
         public void ShowMenu()
         {
             if (needToRenderMainMenu)
             {
-                //gameWindow.Render();
-
                 mainMenu.Render();
-
-                //call out Select function to display all possible buttons
-                //Select(gameWindow.buttonList);
-
                 key = Console.ReadKey(true).Key;
                 do
                 {
@@ -49,10 +45,8 @@ namespace DiceMenu_ND4.ControllerClasses
                             {
                                 PlayerSelectionMenu.Render();
                                 SelectPlayers(PlayerSelectionMenu.buttonList);
-                                //
-                                needToRenderMainMenu = false;
 
-                                //Console.Clear();
+                                needToRenderMainMenu = false;
                                 break;
                             }
                         case ConsoleKey.Q:
@@ -68,21 +62,16 @@ namespace DiceMenu_ND4.ControllerClasses
         }
         void Active(int index, List<Button> buttonList)
         {
-
-            //gameWindow.buttonList[index].SetActive();
             PlayerSelectionMenu.buttonList[index].SetActive();
 
             for (int i = 0; i < buttonList.Count; i++)
             {
                 if (i != index)
                 {
-                    //deactivate all other buttons
-                    //gameWindow.buttonList[i].SetInActive();
                     PlayerSelectionMenu.buttonList[i].SetInActive();
                 }
             }
 
-            //gameWindow.Render();
             PlayerSelectionMenu.Render();
             if (key == ConsoleKey.Enter)
             {
@@ -146,7 +135,7 @@ namespace DiceMenu_ND4.ControllerClasses
         {
             needToRenderPlayerMenu = false;
             needToRenderDiceMenu = true;
-            int diceCount = 0;
+            int diceCount = 1;
 
             if (needToRenderDiceMenu)
             {
@@ -173,17 +162,26 @@ namespace DiceMenu_ND4.ControllerClasses
                 } while (needToRenderDiceMenu);     
             }
         }
-        void DiceTotalCheck(int playerCount, int diceCount)
+        void DiceTotalCheck(int playerIndex, int diceCount)
         {
+            int playerCount = playerIndex + 2;
             diceSelectionMenu.SetDiceCount(diceCount);
             diceSelectionMenu.Render();
 
-            //Console.WriteLine("DiceCount" + diceSelectionMenu.diceCount);
-            /*if (key == ConsoleKey.Enter)
+            if (key == ConsoleKey.Enter)
             {
-                CheckPlayersValue(index);
+                //CheckPlayersValue(index);
+                //Console.WriteLine("Player count: "+ playerCount + "Dice count" + diceCount);
+                //pvz for ()player 1 random(1-6)
+                //game start GameController.Render();
+
+                Console.Clear();
+                GameController myGame = new GameController();
+                myGame.StartGame(playerCount, diceCount);
+
+                needToRenderDiceMenu = false;
             }
-            */
+
         }
     }
 }

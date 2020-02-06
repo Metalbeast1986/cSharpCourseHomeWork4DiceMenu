@@ -10,10 +10,8 @@ namespace DiceMenu_ND4
         {
             Console.CursorVisible = false;
             MenuController menuController = new MenuController();
-            //GuiController guiController = new GuiController();
-
-            //guiController.ShowMenu();
             menuController.ShowMenu();
+
 
             Console.ReadKey();
         }
