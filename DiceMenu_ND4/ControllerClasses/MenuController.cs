@@ -11,6 +11,7 @@ namespace DiceMenu_ND4.ControllerClasses
         public GameWindow gameWindow;
         public PlayerSelectionMenu PlayerSelectionMenu;
         public DiceSelectionMenu diceSelectionMenu;
+        public GameOverMenu gameOverMenu;
         public GameController GameController;
         public MainMenu mainMenu;
 
@@ -18,6 +19,7 @@ namespace DiceMenu_ND4.ControllerClasses
         bool needToRenderPlayerMenu = false;
         bool needToRenderDiceMenu = false;
         bool needToRender = true;
+        bool needToRenderGameOverMenu = false;
         int index = 0;
         ConsoleKey key;
 
@@ -26,6 +28,7 @@ namespace DiceMenu_ND4.ControllerClasses
             gameWindow = new GameWindow();
             PlayerSelectionMenu = new PlayerSelectionMenu();
             diceSelectionMenu = new DiceSelectionMenu();
+            gameOverMenu = new GameOverMenu();
             //GameController = new GameController();
             mainMenu = new MainMenu();
         }
@@ -170,11 +173,6 @@ namespace DiceMenu_ND4.ControllerClasses
 
             if (key == ConsoleKey.Enter)
             {
-                //CheckPlayersValue(index);
-                //Console.WriteLine("Player count: "+ playerCount + "Dice count" + diceCount);
-                //pvz for ()player 1 random(1-6)
-                //game start GameController.Render();
-
                 Console.Clear();
                 GameController myGame = new GameController();
                 myGame.StartGame(playerCount, diceCount);
@@ -183,5 +181,47 @@ namespace DiceMenu_ND4.ControllerClasses
             }
 
         }
+
+        public void ShowGameOverMenu(string winner, int playerCount, int diceCount)
+        {
+            needToRenderGameOverMenu = true;
+            if (needToRenderGameOverMenu)
+            {
+                gameOverMenu.SetWinner(winner);
+                gameOverMenu.Render();
+                key = Console.ReadKey(true).Key;
+                do
+                {
+                    key = Console.ReadKey(true).Key;
+                    switch (key)
+                    {
+                        case ConsoleKey.R:
+                            {
+                                Console.Clear();
+                                GameController myGame = new GameController();
+                                myGame.StartGame(playerCount, diceCount);
+                                needToRenderMainMenu = false;
+                                break;
+                            }
+                            
+                        case ConsoleKey.M:
+                            {
+                                ShowMenu();
+                                needToRenderMainMenu = true;
+                                needToRenderGameOverMenu = false;
+                                break;
+                            }
+                        case ConsoleKey.Q:
+                            {
+                                System.Environment.Exit(0);
+                                break;
+                            }
+                    }
+
+                } while (needToRenderMainMenu);
+            }
+
+        }
+         
     }
 }

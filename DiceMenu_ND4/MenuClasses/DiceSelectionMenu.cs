@@ -38,18 +38,6 @@ namespace DiceMenu_ND4.MenuClasses
         public void SetDiceCount(int diceCount)
         {
             _titleTextBlock.SetLine(2, $"Players have {diceCount} dice");
-           // _titleTextBlock.SetLine(2, $"Players have {diceCount} dice");
         }
-
-        /*
-        public void IncreaseDiceCount(int diceCount)
-        {  
-            diceCount++;
-        }
-        public void DecreaseDiceCount(int diceCount)
-        {
-             diceCount--;
-        }
-        */
     }
 }

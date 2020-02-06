@@ -1,3 +1,4 @@
+using DiceMenu_ND4.MenuClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,10 @@ namespace DiceMenu_ND4.ControllerClasses
 {
     class GameController
     {
+        public GameOverMenu gameOverMenu;
+        public MenuController menuController;
+        ConsoleKey key;
+
         public void StartGame(int playerCount, int diceCount)
         {
             Console.WriteLine($"Player count: {playerCount} , dice count: {diceCount}");
@@ -31,6 +36,8 @@ namespace DiceMenu_ND4.ControllerClasses
                 }
 
                 //gameplay and results
+                Console.WriteLine("Press [ENTER] to throw Dice!");
+
                 Console.WriteLine($"Round nr {roundNumber}");
                 Console.WriteLine("Player list |" + diceText(diceCount) + " Total");
                 Console.WriteLine("");
@@ -41,12 +48,17 @@ namespace DiceMenu_ND4.ControllerClasses
                     int result = 0;
 
                     //dice count
+                   
                     for (int j = 0; j < diceCount; j++)
                     {
-                        diceResult[j] = rnd.Next(1, 6);
-                        result += diceResult[j];
-                        Console.Write("     " + diceResult[j] + " |");
+                        key = Console.ReadKey(true).Key;
+                        if (key == ConsoleKey.Enter)
+                        {
 
+                            diceResult[j] = rnd.Next(1, 6);
+                            result += diceResult[j];
+                            Console.Write("     " + diceResult[j] + " |");
+                        }
                     }
 
                     //display results of current player
@@ -58,6 +70,7 @@ namespace DiceMenu_ND4.ControllerClasses
                     Console.WriteLine("");
                 }
                 Console.WriteLine("");
+               
 
                 var max = results.Select((n, i) => (Number: n, Index: i)).Max();
 
@@ -73,11 +86,16 @@ namespace DiceMenu_ND4.ControllerClasses
                 {
                     Console.WriteLine($"Winner is {players[max.Index]} !");
                     winnerIsFound = true;
+                    menuController = new MenuController();
+                    string winner = players[max.Index];
+                    menuController.ShowGameOverMenu(winner, playerCount, diceCount);
+                    
                 }
             }
 
             Console.ReadKey();
         }
+             
         public string diceText(int diceCount)
         {
             string returnText = "";
